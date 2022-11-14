@@ -1,0 +1,28 @@
+import data.*;
+import model.Partido;
+import model.Candidato;
+import model.Cargo;
+
+public class Principal {
+    public static void main(String[] args) {
+        Partido p1 = new Partido(1, "Brasil Games Show", "BGS");
+        PartidoDAO partidoDAO = new PartidoSQliteDAO();
+
+        //Partido com ID 1 já foi SAVLO
+        System.out.println(partidoDAO.buscar(1).getNome());
+
+        //Cargo com ID 10 já foi SAVLO
+        Cargo c1 = new Cargo(10, "Presidente");
+        CargoDAO CargoDAO = new CargoSQliteDAO();
+
+        /*CargoDAO.salvar(c1);*/
+        System.out.println(CargoDAO.buscar(10).getCargo());
+
+        Candidato ca1 = new Candidato(100, "Alexandre", 1, 10);
+        CandidatoDAO candidatoDAO = new CandidatoSQliteDAO();
+
+        candidatoDAO.salvar(ca1);
+        System.out.println(candidatoDAO.buscar(100).getNome());
+
+    }
+}
